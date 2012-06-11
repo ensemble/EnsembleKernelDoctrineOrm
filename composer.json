@@ -1,0 +1,29 @@
+{
+    "name": "slm-cmf/kernel-doctrine-orm",
+    "description": "Doctrine ORM adapter for kernel for the SLM content management system",
+    "type": "library",
+    "license": "Unlicense",
+    "keywords": [
+        "cmf",
+        "zf2"
+    ],
+    "homepage": "https://github.com/juriansluiman/SlmCmfKernelDoctrineOrm",
+    "authors": [
+        {
+            "name": "Jurian Sluiman",
+            "email": "jurian@juriansluiman.nl",
+            "homepage": "http://juriansluiman.nl/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/DoctrineORMModule": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master",
+        "slm-cmf/kernel": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    }
+}
