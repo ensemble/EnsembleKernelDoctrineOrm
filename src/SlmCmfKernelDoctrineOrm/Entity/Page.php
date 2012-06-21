@@ -66,6 +66,11 @@ class Page implements PageInterface
      * @var ArrayCollection
      */
     protected $children;
+    
+    /**
+     * @var PageCollection
+     */
+    protected $childrenCollection;
 
     /**
      * @ORM\Column(type="string")
@@ -153,11 +158,11 @@ class Page implements PageInterface
 
     public function getChildren ()
     {
-        if (!$this->children instanceof PageCollection) {
-            $this->children = new PageCollection($this->children->toArray());
+        if (!$this->childrenCollection instanceof PageCollection) {
+            $this->childrenCollection = new PageCollection($this->children->toArray());
         }
         
-        return $this->children;
+        return $this->childrenCollection;
     }
 
     public function hasChildren ()
@@ -167,7 +172,8 @@ class Page implements PageInterface
 
     public function setChildren (PageCollection $children)
     {
-        $this->children = $children;
+        $this->childrenCollection = $children;
+        $this->children           = $children->getArrayCopy();
     }
 
     public function getRoute ($includeParent = false)
