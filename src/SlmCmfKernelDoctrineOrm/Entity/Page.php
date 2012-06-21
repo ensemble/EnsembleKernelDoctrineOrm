@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use SlmCmfKernel\Model\PageInterface;
+use SlmCmfKernel\Model\PageCollection;
 
 /**
  * @Gedmo\Tree(type="nested")
@@ -152,6 +153,10 @@ class Page implements PageInterface
 
     public function getChildren ()
     {
+        if (!$this->children instanceof PageCollection) {
+            $this->children = new PageCollection($this->children->toArray());
+        }
+        
         return $this->children;
     }
 
@@ -160,7 +165,7 @@ class Page implements PageInterface
         return (bool) count($this->children);
     }
 
-    public function setChildren ($children)
+    public function setChildren (PageCollection $children)
     {
         $this->children = $children;
     }
