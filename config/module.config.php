@@ -9,14 +9,16 @@ return array(
             'slm_cmf_kernel' => array(
                 'paths' => array(__DIR__ . '/../src/SlmCmfKernelDoctrineOrm/Entity')
             ),
-            
-            // Set Gedmo tree subscriber
-            'orm_evm' => array(
-                'parameters' => array(
-                    'opts' => array(
-                        'subscribers' => array('Gedmo\Tree\TreeListener')
-                    )
+            'orm_default' => array(
+                'drivers' => array(
+                    'SlmCmfKernelDoctrineOrm\Entity' => 'slm_cmf_kernel'
                 )
+            ),
+        ),
+        
+        'eventmanager' => array(
+            'orm_default' => array(
+                'subscribers' => array('Gedmo\Tree\TreeListener')
             ),
         ),
     ),
