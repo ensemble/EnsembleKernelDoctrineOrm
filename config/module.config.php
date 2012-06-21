@@ -1,18 +1,13 @@
 <?php
 return array(
-    'di' => array(
-        'instance' => array(
-            // Set Doctrine annotations in driver chain
-            'orm_driver_chain' => array(
-                'parameters' => array(
-                    'drivers' => array(
-                        'slm_cmf_base' => array(
-                            'class'     => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                            'namespace' => 'SlmCmfKernelDoctrineOrm\Entity',
-                            'paths'     => array(__DIR__ . '/../src/SlmCmfKernelDoctrineOrm/Entity')
-                        ),
-                    ),
-                ),
+    'slmcmf_kernel' => array(
+        'page_service_class' => 'SlmCmfKernelDoctrineOrm\Service\Page',
+    ),
+    
+    'doctrine' => array(
+        'driver' => array(
+            'slm_cmf_kernel' => array(
+                'paths' => array(__DIR__ . '/../src/SlmCmfKernelDoctrineOrm/Entity')
             ),
             
             // Set Gedmo tree subscriber

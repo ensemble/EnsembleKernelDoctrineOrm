@@ -31,17 +31,72 @@
  * @license    http://unlicense.org Unlicense
  */
 
-use SlmCmfKernelDoctrineOrm\Service;
+namespace SlmCmfKernelDoctrineOrm\Service;
 
-return array(
-    'factories' => array(
-        'SlmCmfKernelDoctrineOrm\Service\Page' => function($sm) {
-            $em = $sm->get('Doctrine\ORM\EntityManager');
+use Doctrine\ORM\EntityManager;
+use SlmCmfKernel\Service\PageInterface;
+use SlmCmfKernel\Model\PageCollection;
 
-            $service = new Service\Page;
-            $service->setEntityManager($em);
+/**
+ * Description of Page
+ */
+class Page implements PageInterface
+{
+    protected $em;
+    protected $repository;
+    
+    /**
+     * Set entity manager
+     * 
+     * @param EntityManager $em
+     */
+    public function setEntityManager(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function find($id)
+    {
+        $page = $this->getRepository()->find($id);
+        return $page;
+    }
 
-            return $service;
-        },
-    ),
-);
+    /**
+     * {@inheritdoc}
+     */
+    public function findAll()
+    {
+        $pages      = $this->getRepository()->findAll();
+        $collection = new PageCollection($pages);
+            
+        return $collection;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTree()
+    {
+        $pages      = $this->getRepository()->getRootNodes();
+        $collection = new PageCollection($pages);
+            
+        return $collection;
+    }
+    
+    protected function getEntityManager()
+    {
+        return $this->em;
+    }
+    
+    protected function getRepository()
+    {
+        if (null == $this->repository) {
+            $this->repository = $this->em->getRepository('SlmCmfKernelDoctrineOrm\Entity\Page');
+        }
+        
+        return $this->repository;
+    }
+}
