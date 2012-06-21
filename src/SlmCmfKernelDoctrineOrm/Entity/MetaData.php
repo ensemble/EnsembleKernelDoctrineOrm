@@ -11,9 +11,16 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table(name="page_metadata")
  */
 class MetaData implements MetaDataInterface
-{    
+{ 
     /**
      * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     * @var integer
+     */
+    protected $id;
+    
+    /**
      * @ORM\OneToOne(targetEntity="SlmCmfKernelDoctrineOrm\Entity\Page", inversedBy="metaData")
      * @var Page
      */
