@@ -12,7 +12,7 @@ use SlmCmfKernel\Model\PageCollection;
 /**
  * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="page")
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
+ * @ORM\Entity(repositoryClass="SlmCmfKernelDoctrineOrm\Repository\Page")
  */
 class Page implements PageInterface
 {
@@ -52,6 +52,12 @@ class Page implements PageInterface
      */
     protected $root;
 
+    /**
+     * @ORM\Column(name="order", type="integer", nullable=true)
+     * @var integer
+     */
+    protected $order;
+    
     /**
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="SlmCmfKernelDoctrineOrm\Entity\Page", inversedBy="children")
@@ -144,6 +150,16 @@ class Page implements PageInterface
     public function setRoot ($root)
     {
         $this->root = $root;
+    }
+    
+    public function getOrder()
+    {
+        return $this->order;
+    }
+    
+    public function setOrder($order)
+    {
+        $this->order = $order;
     }
 
     public function getParent ()
