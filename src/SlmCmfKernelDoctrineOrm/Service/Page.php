@@ -43,7 +43,8 @@ namespace SlmCmfKernelDoctrineOrm\Service;
 
 use Doctrine\ORM\EntityManager;
 use SlmCmfKernel\Service\PageInterface;
-use SlmCmfKernel\Model\PageCollection;
+use SlmCmfKernel\Model\PageCollection as PageCollectionModel;
+use SlmCmfKernel\Model\PageInterface  as PageModel;
 
 /**
  * Description of Page
@@ -75,23 +76,27 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function findAll()
+    public function getTree()
     {
-        $pages      = $this->getRepository()->findAll();
-        $collection = new PageCollection($pages);
+        $pages      = $this->getRepository()->getRootNodes();
+        $collection = new PageCollectionModel($pages);
 
         return $collection;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getTree()
+    public function persist(PageModel $page)
     {
-        $pages      = $this->getRepository()->getRootNodes();
-        $collection = new PageCollection($pages);
 
-        return $collection;
+    }
+
+    public function update(PageModel $page)
+    {
+
+    }
+
+    public function delete(PageModel $page)
+    {
+
     }
 
     protected function getEntityManager()
