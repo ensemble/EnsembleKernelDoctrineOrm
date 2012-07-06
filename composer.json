@@ -1,13 +1,13 @@
 {
-    "name": "slm-cmf/kernel-doctrine-orm",
-    "description": "Doctrine ORM adapter for kernel for the SLM content management system",
+    "name": "ensemble/kernel-doctrine-orm",
+    "description": "Doctrine ORM adapter for kernel of the ensemble content management system",
     "type": "library",
-    "license": "Unlicense",
+    "license": "new-bsd",
     "keywords": [
         "cmf",
         "zf2"
     ],
-    "homepage": "https://github.com/juriansluiman/SlmCmfKernelDoctrineOrm",
+    "homepage": "https://github.com/ensemble/EnsembleKernelDoctrineOrm",
     "authors": [
         {
             "name": "Jurian Sluiman",
@@ -19,11 +19,14 @@
         "php": ">=5.3.3",
         "doctrine/DoctrineORMModule": "dev-master",
         "gedmo/doctrine-extensions": "dev-master",
-        "slm-cmf/kernel": "dev-master"
+        "ensemble/kernel": "dev-master"
     },
     "autoload": {
+        "psr-0": {
+            "Ensemble\\KernelDoctrineOrm": "src/"
+        },
         "classmap": [
-            "./"
+            "./Module.php"
         ]
     }
 }
