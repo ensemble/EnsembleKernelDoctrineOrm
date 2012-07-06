@@ -39,7 +39,7 @@
  * @link        http://ensemble.github.com
  */
 
-namespace SlmCmfKernelDoctrineOrm;
+namespace Ensemble\KernelDoctrineOrm;
 
 use Zend\ModuleManager\Feature;
 use Zend\EventManager\Event;

@@ -39,77 +39,20 @@
  * @link        http://ensemble.github.com
  */
 
-namespace SlmCmfKernelDoctrineOrm\Service;
+namespace Ensemble\KernelDoctrineOrm\Repository;
 
-use Doctrine\ORM\EntityManager;
-use SlmCmfKernel\Service\PageInterface;
-use SlmCmfKernel\Model\PageCollection as PageCollectionModel;
-use SlmCmfKernel\Model\PageInterface  as PageModel;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * Description of Page
  */
-class Page implements PageInterface
+class Page extends NestedTreeRepository
 {
-    protected $em;
-    protected $repository;
-
-    /**
-     * Set entity manager
-     *
-     * @param EntityManager $em
-     */
-    public function setEntityManager(EntityManager $em)
+    public function getRootNodesQueryBuilder()
     {
-        $this->em = $em;
-    }
+        $qb = parent::getRootNodesQueryBuilder()
+                    ->addOrderBy('node.order', 'ASC');
 
-    /**
-     * {@inheritdoc}
-     */
-    public function find($id)
-    {
-        $page = $this->getRepository()->find($id);
-        return $page;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTree()
-    {
-        $pages      = $this->getRepository()->getRootNodes();
-        $collection = new PageCollectionModel($pages);
-
-        return $collection;
-    }
-
-    public function persist(PageModel $page)
-    {
-
-    }
-
-    public function update(PageModel $page)
-    {
-
-    }
-
-    public function delete(PageModel $page)
-    {
-
-    }
-
-    protected function getEntityManager()
-    {
-        return $this->em;
-    }
-
-    protected function getRepository()
-    {
-        if (null == $this->repository) {
-            $this->repository = $this->em->getRepository('SlmCmfKernelDoctrineOrm\Entity\Page');
-        }
-
-        return $this->repository;
+        return $qb;
     }
 }

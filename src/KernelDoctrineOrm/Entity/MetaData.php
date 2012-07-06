@@ -39,9 +39,9 @@
  * @link        http://ensemble.github.com
  */
 
-namespace SlmCmfKernelDoctrineOrm\Entity;
+namespace Ensemble\KernelDoctrineOrm\Entity;
 
-use SlmCmfKernel\Model\MetaDataInterface;
+use Ensemble\Kernel\Model\MetaDataInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -60,7 +60,7 @@ class MetaData implements MetaDataInterface
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="SlmCmfKernelDoctrineOrm\Entity\Page", inversedBy="metaData")
+     * @ORM\OneToOne(targetEntity="Ensemble\KernelDoctrineOrm\Entity\Page", inversedBy="metaData")
      * @var Page
      */
     protected $page;

@@ -40,18 +40,18 @@
  */
 
 return array(
-    'slmcmf_kernel' => array(
-        'page_service_class' => 'SlmCmfKernelDoctrineOrm\Service\Page',
+    'ensemble_kernel' => array(
+        'page_service_class' => 'Ensemble\KernelDoctrineOrm\Service\Page',
     ),
 
     'doctrine' => array(
         'driver' => array(
-            'slm_cmf_kernel' => array(
-                'paths' => array(__DIR__ . '/../src/SlmCmfKernelDoctrineOrm/Entity')
+            'ensemble_cmf_kernel' => array(
+                'paths' => array(__DIR__ . '/../src/KernelDoctrineOrm/Entity')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'SlmCmfKernelDoctrineOrm\Entity' => 'slm_cmf_kernel'
+                    'Ensemble\KernelDoctrineOrm\Entity' => 'ensemble_cmf_kernel'
                 )
             ),
         ),

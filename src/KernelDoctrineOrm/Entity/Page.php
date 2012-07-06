@@ -39,19 +39,19 @@
  * @link        http://ensemble.github.com
  */
 
-namespace SlmCmfKernelDoctrineOrm\Entity;
+namespace Ensemble\KernelDoctrineOrm\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-use SlmCmfKernel\Model\PageInterface;
-use SlmCmfKernel\Model\PageCollection;
+use Ensemble\Kernel\Model\PageInterface;
+use Ensemble\Kernel\Model\PageCollection;
 
 /**
  * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="page")
- * @ORM\Entity(repositoryClass="SlmCmfKernelDoctrineOrm\Repository\Page")
+ * @ORM\Entity(repositoryClass="Ensemble\KernelDoctrineOrm\Repository\Page")
  */
 class Page implements PageInterface
 {
@@ -99,14 +99,14 @@ class Page implements PageInterface
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="SlmCmfKernelDoctrineOrm\Entity\Page", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Ensemble\KernelDoctrineOrm\Entity\Page", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      * @var Page
      */
     protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="SlmCmfKernelDoctrineOrm\Entity\Page", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Ensemble\KernelDoctrineOrm\Entity\Page", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
      * @var ArrayCollection
      */
@@ -136,7 +136,7 @@ class Page implements PageInterface
     protected $moduleId;
 
     /**
-     * @ORM\OneToOne(targetEntity="SlmCmfKernelDoctrineOrm\Entity\MetaData", mappedBy="page")
+     * @ORM\OneToOne(targetEntity="Ensemble\KernelDoctrineOrm\Entity\MetaData", mappedBy="page")
      * @var MetaData
      */
     protected $metaData;
