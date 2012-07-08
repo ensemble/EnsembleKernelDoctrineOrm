@@ -44,7 +44,7 @@ namespace Ensemble\KernelDoctrineOrm\Service;
 use Doctrine\ORM\EntityManager;
 use Ensemble\Kernel\Service\PageInterface;
 use Ensemble\Kernel\Model\PageCollection as PageCollectionModel;
-use Ensemble\Kernelgi\Model\PageInterface  as PageModel;
+use Ensemble\Kernel\Model\PageInterface  as PageModel;
 
 /**
  * Description of Page
