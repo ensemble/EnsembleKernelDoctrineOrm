@@ -48,11 +48,4 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class Page extends NestedTreeRepository
 {
-    public function getRootNodesQueryBuilder()
-    {
-        $qb = parent::getRootNodesQueryBuilder()
-                    ->addOrderBy('node.order', 'ASC');
-
-        return $qb;
-    }
 }

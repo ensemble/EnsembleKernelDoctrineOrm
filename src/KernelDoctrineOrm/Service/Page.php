@@ -78,7 +78,7 @@ class Page implements PageInterface
      */
     public function getTree()
     {
-        $pages      = $this->getRepository()->getRootNodes();
+        $pages      = $this->getRepository()->getRootNodes('order', 'ASC');
         $collection = new PageCollectionModel($pages);
 
         return $collection;
