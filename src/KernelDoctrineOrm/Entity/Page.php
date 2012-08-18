@@ -106,6 +106,12 @@ class Page implements PageInterface
     protected $parent;
 
     /**
+     * @ORM\Column(type="boolean")
+     * @var boolean
+     */
+    protected $visible = true;
+
+    /**
      * @ORM\OneToMany(targetEntity="Ensemble\KernelDoctrineOrm\Entity\Page", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
      * @var ArrayCollection
@@ -229,6 +235,22 @@ class Page implements PageInterface
     {
         $this->childrenCollection = $children;
         $this->children           = $children->getArrayCopy();
+    }
+
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+
+    public function isVisible()
+    {
+        return $this->getVisible();
+    }
+
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+        return $this;
     }
 
     public function getRoute ($includeParent = false)
