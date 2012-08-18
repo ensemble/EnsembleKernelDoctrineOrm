@@ -136,7 +136,7 @@ class Page implements PageInterface
     protected $module;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @var string
      */
     protected $moduleId;
