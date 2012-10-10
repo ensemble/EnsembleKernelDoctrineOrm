@@ -47,6 +47,7 @@ return array(
     'doctrine' => array(
         'driver' => array(
             'ensemble_cmf_kernel' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'paths' => array(__DIR__ . '/../src/KernelDoctrineOrm/Entity')
             ),
             'orm_default' => array(
