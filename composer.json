@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "doctrine/doctrine-orm-module": "dev-master",
+        "doctrine/doctrine-orm-module": "0.*",
         "gedmo/doctrine-extensions": "dev-master",
         "ensemble/kernel": "dev-master"
     },
