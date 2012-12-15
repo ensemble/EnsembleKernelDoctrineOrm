@@ -39,17 +39,11 @@
  * @link        http://ensemble.github.com
  */
 
-use Ensemble\KernelDoctrineOrm\Service;
-
 return array(
     'factories' => array(
-        'Ensemble\KernelDoctrineOrm\Service\Page' => function($sm) {
+        'Ensemble\Kernel\Mapper\Page' => function ($sm) {
             $em = $sm->get('Doctrine\ORM\EntityManager');
-
-            $service = new Service\Page;
-            $service->setEntityManager($em);
-
-            return $service;
-        },
+            return $em->getRepository('Ensemble\KernelDoctrineOrm\Entity\Page');
+        }
     ),
 );

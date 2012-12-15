@@ -41,11 +41,48 @@
 
 namespace Ensemble\KernelDoctrineOrm\Repository;
 
+use Doctrine\ORM\ORMException;
+use Ensemble\Kernel\Mapper\PageInterface as PageMapperInterface;
+use Ensemble\Kernel\Model\PageInterface  as PageModel;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
  * Description of Page
  */
-class Page extends NestedTreeRepository
+class Page extends NestedTreeRepository implements PageMapperInterface
 {
+    /**
+     * {@inheritDoc}
+     */
+    public function persist(PageModel $page)
+    {
+        $this->_em->persist($page);
+        $this->_em->flush();
+
+        return $page;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function update(PageModel $page)
+    {
+        $this->_em->flush($page);
+
+        return $page;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete(PageModel $page)
+    {
+        try {
+            $this->_em->remove($page);
+        } catch(ORMException $exception) {
+            return false;
+        }
+
+        return true;
+    }
 }
