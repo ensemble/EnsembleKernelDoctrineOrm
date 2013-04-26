@@ -18,7 +18,7 @@
     "require": {
         "php": ">=5.3.3",
         "doctrine/doctrine-orm-module": "0.*",
-        "gedmo/doctrine-extensions": "dev-master",
+        "gedmo/doctrine-extensions": ">=2.3.5",
         "ensemble/kernel": "dev-master"
     },
     "autoload": {
