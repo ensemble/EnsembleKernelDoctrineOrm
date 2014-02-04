@@ -95,43 +95,69 @@ class MetaData implements MetaDataInterface
      */
     protected $keywords;
 
+    /**
+     * @return Page
+     */
     public function getPage()
     {
         return $this->page;
     }
 
-    public function setPage($page)
+    /**
+     * @param Page $page
+     */
+    public function setPage(Page $page)
     {
         $this->page = $page;
     }
 
-    public function getTitle ()
+    /**
+     * @return string
+     */
+    public function getTitle()
     {
         return $this->title;
     }
 
-    public function setTitle ($title)
+    /**
+     * @param $title
+     * @return MetaData
+     */
+    public function setTitle($title)
     {
         $this->title = (string) $title;
         return $this;
     }
 
-    public function getShortTitle ()
+    /**
+     * @return string
+     */
+    public function getShortTitle()
     {
         return $this->shortTitle;
     }
 
-    public function setShortTitle ($shortTitle)
+    /**
+     * @param $shortTitle
+     * @return MetaData
+     */
+    public function setShortTitle($shortTitle)
     {
         $this->shortTitle = (string) $shortTitle;
         return $this;
     }
 
-    public function hasShortTitle ()
+    /**
+     * @return bool
+     */
+    public function hasShortTitle()
     {
         return !empty($this->shortTitle);
     }
 
+    /**
+     * @return string
+     */
     public function getNavigationTitle()
     {
         if ($this->hasShortTitle()) {
@@ -141,22 +167,35 @@ class MetaData implements MetaDataInterface
         }
     }
 
-    public function getLongTitle ()
+    /**
+     * @return string
+     */
+    public function getLongTitle()
     {
         return $this->longTitle;
     }
 
-    public function setLongTitle ($longTitle)
+    /**
+     * @param $longTitle
+     * @return MetaData
+     */
+    public function setLongTitle($longTitle)
     {
         $this->longTitle = (string) $longTitle;
         return $this;
     }
 
-    public function hasLongTitle ()
+    /**
+     * @return bool
+     */
+    public function hasLongTitle()
     {
         return !empty($this->longTitle);
     }
 
+    /**
+     * @return string
+     */
     public function getDescriptiveTitle()
     {
         if ($this->hasLongTitle()) {
@@ -166,23 +205,37 @@ class MetaData implements MetaDataInterface
         }
     }
 
-    public function getDescription ()
+    /**
+     * @return string
+     */
+    public function getDescription()
     {
         return $this->description;
     }
 
-    public function setDescription ($description)
+    /**
+     * @param $description
+     * @return MetaData
+     */
+    public function setDescription($description)
     {
         $this->description = (string) $description;
         return $this;
     }
 
-    public function getKeywords ()
+    /**
+     * @return string
+     */
+    public function getKeywords()
     {
         return $this->keywords;
     }
 
-    public function setKeywords ($keywords)
+    /**
+     * @param $keywords
+     * @return MetaData
+     */
+    public function setKeywords($keywords)
     {
         $this->keywords = (string) $keywords;
         return $this;

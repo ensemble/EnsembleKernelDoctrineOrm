@@ -40,10 +40,6 @@
  */
 
 return array(
-    'ensemble_kernel' => array(
-        'page_service_class' => 'Ensemble\KernelDoctrineOrm\Service\Page',
-    ),
-
     'doctrine' => array(
         'driver' => array(
             'ensemble_cmf_kernel' => array(

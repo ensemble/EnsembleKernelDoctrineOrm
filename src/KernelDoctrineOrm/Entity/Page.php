@@ -147,77 +147,134 @@ class Page implements PageInterface
      */
     protected $metaData;
 
+    /**
+     * Constructor
+     */
     public function __construct ()
     {
-        $this->children = new ArrayCollection;
+        $this->children = new ArrayCollection();
     }
 
-    public function getId ()
+    /**
+     * @return int
+     */
+    public function getId()
     {
         return (int) $this->id;
     }
 
-    public function getLft ()
+    /**
+     * @return int
+     */
+    public function getLft()
     {
         return $this->lft;
     }
 
-    public function setLft ($lft)
+    /**
+     * @param $lft
+     * @return Page
+     */
+    public function setLft($lft)
     {
-        $this->lft = $lft;
+        $this->lft = (int) $lft;
+        return $this;
     }
 
-    public function getLvl ()
+    /**
+     * @return int
+     */
+    public function getLvl()
     {
         return $this->lvl;
     }
 
-    public function setLvl ($lvl)
+    /**
+     * @param $lvl
+     * @return Page
+     */
+    public function setLvl($lvl)
     {
-        $this->lvl = $lvl;
+        $this->lvl = (int) $lvl;
+        return $this;
     }
 
-    public function getRgt ()
+    /**
+     * @return int
+     */
+    public function getRgt()
     {
         return $this->rgt;
     }
 
-    public function setRgt ($rgt)
+    /**
+     * @param $rgt
+     * @return Page
+     */
+    public function setRgt($rgt)
     {
-        $this->rgt = $rgt;
+        $this->rgt = (int) $rgt;
+        return $this;
     }
 
-    public function getRoot ()
+    /**
+     * @return int
+     */
+    public function getRoot()
     {
         return $this->root;
     }
 
-    public function setRoot ($root)
+    /**
+     * @param $root
+     * @return Page
+     */
+    public function setRoot($root)
     {
         $this->root = $root;
+        return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getOrder()
     {
         return $this->order;
     }
 
+    /**
+     * @param $order
+     * @return Page
+     */
     public function setOrder($order)
     {
-        $this->order = $order;
+        $this->order = (int) $order;
+        return $this;
     }
 
-    public function getParent ()
+    /**
+     * @return Page
+     */
+    public function getParent()
     {
         return $this->parent;
     }
 
-    public function setParent (Page $parent)
+    /**
+     * @param Page $parent
+     * @return Page
+     */
+    public function setParent(Page $parent)
     {
         $this->parent = $parent;
+        return $this;
     }
 
-    public function getChildren ()
+    /**
+     * @return PageCollection
+     */
+    public function getChildren()
     {
         if (!$this->childrenCollection instanceof PageCollection) {
             $this->childrenCollection = new PageCollection($this->children->toArray());
@@ -226,34 +283,57 @@ class Page implements PageInterface
         return $this->childrenCollection;
     }
 
-    public function hasChildren ()
+    /**
+     * @return bool
+     */
+    public function hasChildren()
     {
         return (bool) count($this->children);
     }
 
-    public function setChildren (PageCollection $children)
+    /**
+     * @param  PageCollection $children
+     * @return Page
+     */
+    public function setChildren(PageCollection $children)
     {
         $this->childrenCollection = $children;
         $this->children           = $children->getArrayCopy();
+
+        return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getVisible()
     {
         return $this->visible;
     }
 
+    /**
+     * @return bool
+     */
     public function isVisible()
     {
         return $this->getVisible();
     }
 
+    /**
+     * @param $visible
+     * @return Page
+     */
     public function setVisible($visible)
     {
-        $this->visible = $visible;
+        $this->visible = (bool) $visible;
         return $this;
     }
 
-    public function getRoute ($includeParent = false)
+    /**
+     * @param bool $includeParent
+     * @return string
+     */
+    public function getRoute($includeParent = false)
     {
         if (false === $includeParent) {
             return $this->route;
@@ -269,40 +349,67 @@ class Page implements PageInterface
         return implode('/', $route);
     }
 
-    public function setRoute ($route)
+    /**
+     * @param $route
+     * @return Page
+     */
+    public function setRoute($route)
     {
         $this->route = $route;
+        return $this;
     }
 
-    public function getModule ()
+    /**
+     * @return string
+     */
+    public function getModule()
     {
         return $this->module;
     }
 
-    public function setModule ($module)
+    /**
+     * @param $module
+     * @return Page
+     */
+    public function setModule($module)
     {
         $this->module = $module;
+        return $this;
     }
 
-    public function getModuleId ()
+    /**
+     * @return int
+     */
+    public function getModuleId()
     {
         return $this->moduleId;
     }
 
-    public function setModuleId ($moduleId)
+    /**
+     * @param $moduleId
+     * @return Page
+     */
+    public function setModuleId($moduleId)
     {
-        $this->moduleId = $moduleId;
+        $this->moduleId = (int) $moduleId;
+        return $this;
     }
 
+    /**
+     * @return MetaData
+     */
     public function getMetaData()
     {
         return $this->metaData;
     }
 
+    /**
+     * @param MetaData $metaData
+     * @return Page
+     */
     public function setMetaData(MetaData $metaData)
     {
         $this->metaData = $metaData;
+        return $this;
     }
-
-
 }
